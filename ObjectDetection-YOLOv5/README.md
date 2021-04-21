@@ -1,19 +1,19 @@
-# yolov5-dnn-cpp-py
-yolov5s,yolov5l,yolov5m,yolov5x的onnx文件在百度云盘下载，
-链接：https://pan.baidu.com/s/1d67LUlOoPFQy0MV39gpJiw 
-提取码：bayj 
+# Object detection using YOLOv5 model
 
-python版本的主程序是main_yolov5.py，C++版本的主程序是main_yolo.cpp
+This project provides the inference code for YOLOv5. You can use it in Python and C++.
 
-运行整套程序只需要安装opencv库(4.0以上版本的)，彻底摆脱对深度学习框架的依赖
+Please Download the ONNX weight from [BaiduNet](https://pan.baidu.com/s/19ZQxfFrFhukUC6xKSsvuoA) (code: yolo) firstly.
 
-如果你想运行生成onnx文件的程序，那么就cd到convert-onnx文件夹，在百度云盘下载yolov5s,yolov5l,yolov5m,yolov5x的.pth文件放在该目录里，
-百度云盘链接: https://pan.baidu.com/s/1oIdwpp6kuasANMInTpHnrw  密码: m3n1
+If you run it in C++, please ensure you have install a OpenCV 4.0 or higher (tested in 4.5.0).
 
-这4个pth文件是从https://github.com/ultralytics/yolov5  的pth文件里抽取出参数，保存到顺序字典OrderedDict里，最后生成新的pth文件
-在convert-onnx文件夹里，我把4种yolov5的网络结构全都定义在.py文件里，这样便于读者直观的了解网络结构以及层与层的连接关系。
-下载完成pth文件后，运行convert_onnx.py就可以生成.onnx文件，这个程序需要依赖pytorch1.7.0框架，如果pytorch版本低了，程序运行会报错。
-因为在yolov5里有新的激活函数，旧版本pytorch可能不支持的
+Once you have trained your own weights from [ultralytics/yolov5](https://github.com/ultralytics/yolov5). Please run the `convert_onnx.py` to convert *.pt model to *.ONNX.
 
-在编写这套程序时，遇到的bug和解决办法，可以阅读我的csdn博客
-https://blog.csdn.net/nihate/article/details/112731327
+~~~bash
+python convert_onnx.py --net_type yolov5s --num_classes 80
+~~~
+In case of error happen, ensure your pytorch is >= 1.7.0.
+
+and we thank [hpc203](https://github.com/hpc203/yolov5-dnn-cpp-python) for his work.
+
+If you could read Chinese, this [blog](https://blog.csdn.net/nihate/article/details/112731327) maybe help you.
+
